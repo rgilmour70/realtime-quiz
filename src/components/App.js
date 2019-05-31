@@ -1,43 +1,43 @@
 import React, { Component } from 'react';
-import CommentBox from './CommentBox';
-import Comments from './Comments';
+import Quiz from './Quiz';
+import Answers from './Answers';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.handleAddComment = this.handleAddComment.bind(this);
+    this.handleAddAnswer = this.handleAddAnswer.bind(this);
     this.state = {
-      comments: []
+      answers: []
     }
   }
 
   componentDidMount() {
     /*global Ably*/
-    const channel = Ably.channels.get('comments');
+    const channel = Ably.channels.get('answers');
 
     channel.attach();
     channel.once('attached', () => {
       channel.history((err, page) => {
-        // create a new array with comments only in an reverseved order (i.e old to new)
-        const comments = Array.from(page.items.reverse(), item => item.data)
+        // create a new array with answers only in an reverseved order (i.e old to new)
+        const answers = Array.from(page.items.reverse(), item => item.data)
 
-        this.setState({ comments });
+        this.setState({ answers });
 
         // from Tom at Ably
         channel.subscribe((msg) => {
           const commentObject = msg['data'];
-          this.handleAddComment(commentObject);
+          this.handleAddAnswer(commentObject);
         })
 
       });
     });
   }
 
-  handleAddComment(comment) {
+  handleAddAnswer(comment) {
     this.setState(prevState => {
       return {
-        comments: prevState.comments.concat(comment)
+        answers: prevState.answers.concat(comment)
       };
     });
   }
@@ -48,8 +48,8 @@ class App extends Component {
         <div className="container">
           <div className="columns">
             <div className="column is-half is-offset-one-quarter">
-              <CommentBox handleAddComment={this.handleAddComment} />
-              <Comments comments={this.state.comments.reverse()} />
+              <Quiz handleAddAnswer={this.handleAddAnswer} />
+              <Answers answers={this.state.answers} />
             </div>
           </div>
         </div>
