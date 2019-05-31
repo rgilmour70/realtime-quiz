@@ -20,24 +20,24 @@ class App extends Component {
     channel.once('attached', () => {
       channel.history((err, page) => {
         // create a new array with answers only in an reverseved order (i.e old to new)
-        const answers = Array.from(page.items.reverse(), item => item.data)
+        const answers = Array.from(page.items, item => item.data)
 
         this.setState({ answers });
 
         // from Tom at Ably
         channel.subscribe((msg) => {
-          const commentObject = msg['data'];
-          this.handleAddAnswer(commentObject);
+          const answerObject = msg['data'];
+          this.handleAddAnswer(answerObject);
         })
 
       });
     });
   }
 
-  handleAddAnswer(comment) {
+  handleAddAnswer(answer) {
     this.setState(prevState => {
       return {
-        answers: prevState.answers.concat(comment)
+        answers: prevState.answers.concat(answer)
       };
     });
   }
