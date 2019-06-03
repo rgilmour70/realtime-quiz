@@ -8,7 +8,8 @@ class App extends Component {
 
     this.handleAddAnswer = this.handleAddAnswer.bind(this);
     this.state = {
-      answers: []
+      answers: [],
+      activityNumber: 0,
     }
   }
 
@@ -19,7 +20,7 @@ class App extends Component {
     channel.attach();
     channel.once('attached', () => {
       channel.history((err, page) => {
-        // create a new array with answers only in an reverseved order (i.e old to new)
+        // create a new array with answers from users
         const answers = Array.from(page.items, item => item.data)
 
         this.setState({ answers });
@@ -29,7 +30,6 @@ class App extends Component {
           const answerObject = msg['data'];
           this.handleAddAnswer(answerObject);
         })
-
       });
     });
   }
@@ -41,6 +41,13 @@ class App extends Component {
       };
     });
   }
+
+  getUrlVars() {
+    let vars = {};
+    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) => { vars[key] = value });
+    return vars;
+  }
+
 
   render() {
     return (
