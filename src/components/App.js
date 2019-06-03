@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Quiz from './Quiz';
 import Answers from './Answers';
+import question from '../utils/dataService';
 
 class App extends Component {
   constructor(props) {
@@ -32,6 +33,9 @@ class App extends Component {
         })
       });
     });
+
+    const activityNumber = parseInt(this.getUrlVars()['q']);
+    this.setState({ activityNumber : activityNumber });
   }
 
   handleAddAnswer(answer) {
@@ -48,19 +52,12 @@ class App extends Component {
     return vars;
   }
 
-
   render() {
     return (
-      <section className="section">
-        <div className="container">
-          <div className="columns">
-            <div className="column is-half is-offset-one-quarter">
-              <Quiz handleAddAnswer={this.handleAddAnswer} />
-              <Answers answers={this.state.answers} />
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="container">
+        <Quiz handleAddAnswer={this.handleAddAnswer} activityNumber={this.state.activityNumber} />
+        <Answers answers={this.state.answers} />
+      </div>
     );
   }
 }

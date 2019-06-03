@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class Quiz extends Component {
+
   constructor(props) {
     super(props);
     this.addAnswer = this.addAnswer.bind(this);
@@ -36,6 +37,7 @@ class Quiz extends Component {
   }
 
   render() {
+
     return (
       <div>
         <p className="question">Puppies are cute. (T/F)</p>
