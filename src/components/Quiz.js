@@ -48,7 +48,7 @@ class Quiz extends Component {
             <input className="form-check-input" type="radio" name="q1" id="inlineRadio2" value="false" />
             <label className="form-check-label" htmlFor="inlineRadio2">False</label>
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-primary btn-sm">Submit</button>
         </form>
       </div>
     );
