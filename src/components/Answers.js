@@ -12,15 +12,12 @@ class Answers extends Component {
       {x: 'T', y: t},
       {x: 'F', y: f},
     ];
-    const chartWidth = 200;
-    const chartHeight = 150;
-    const chartDomain = [0, chartHeight];
+    const chartWidth = 300;
+    const chartHeight = 200;
+    const chartDomain = [0, 40]; // max class size?
 
     return (
       <div className="results-display">
-        <div>True: {this.props.answers.filter(a => a.answer === 'true').length}</div>
-        <div>False: {this.props.answers.filter(a => a.answer === 'false').length} </div>
-        <br />
         <XYPlot
           xType="ordinal"
           width={chartWidth}

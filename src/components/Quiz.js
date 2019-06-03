@@ -7,7 +7,7 @@ class Quiz extends Component {
   }
 
   addAnswer(e) {
-    // Prevent the default behaviour of form submit
+
     e.preventDefault();
 
     // Get the value of the anwer
