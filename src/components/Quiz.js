@@ -59,6 +59,7 @@ class Quiz extends Component {
       </div>
     );
   }
+  
 }
 
 export default Quiz;
