@@ -4,6 +4,9 @@ class Quiz extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      question: this.props.question
+    }
     this.addAnswer = this.addAnswer.bind(this);
   }
 
@@ -40,7 +43,7 @@ class Quiz extends Component {
 
     return (
       <div>
-        <p className="question">Puppies are cute. (T/F)</p>
+        <p className="question">{this.state.question.text}</p>
         <form onSubmit={this.addAnswer}>
           <div className="form-check form-check-inline">
             <input className="form-check-input" type="radio" name="q1" id="inlineRadio1" value="true" />

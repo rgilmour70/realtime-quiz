@@ -10,7 +10,7 @@ class App extends Component {
     this.handleAddAnswer = this.handleAddAnswer.bind(this);
     this.state = {
       answers: [],
-      activityNumber: 0,
+      question: getSelectedContent()
     }
   }
 
@@ -34,9 +34,6 @@ class App extends Component {
       });
     });
 
-    const question = getSelectedContent();
-    console.log(question);
-    
   }
 
   handleAddAnswer(answer) {
@@ -50,7 +47,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <Quiz handleAddAnswer={this.handleAddAnswer} activityNumber={this.state.activityNumber} />
+        <Quiz handleAddAnswer={this.handleAddAnswer} {...this.state} />
         <Answers answers={this.state.answers} />
       </div>
     );
