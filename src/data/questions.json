@@ -6,7 +6,7 @@
 		"answers" : [
 			{
 				"answerId" : 1,
-				"text" : "The English peerage",
+				"text" : "All the lords and ladies of Westeros",
 				"isCorrect" : false,
 				"response" : "No."
 			},

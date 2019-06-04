@@ -18,11 +18,9 @@ class Quiz extends Component {
     const answer = e.target.elements.q1.value.trim();
     console.log(answer);
 
-    // Make sure name and answer boxes are filled
+    // Make sure name boxes are filled
     if (answer) {
       const answerObject = { answer };
-
-      // this.props.handleAddComment(answerObject);
 
       // Publish answer
       /*global Ably*/
@@ -33,9 +31,6 @@ class Quiz extends Component {
         }
       });
 
-      // Clear input fields
-      // e.target.elements.answer.value = '';
-      // e.target.elements.name.value = '';
     }
   }
 
@@ -45,14 +40,20 @@ class Quiz extends Component {
       <div>
         <p className="question">{this.state.question.text}</p>
         <form onSubmit={this.addAnswer}>
-          <div className="form-check form-check-inline">
-            <input className="form-check-input" type="radio" name="q1" id="inlineRadio1" value="true" />
-            <label className="form-check-label" htmlFor="inlineRadio1">True</label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input className="form-check-input" type="radio" name="q1" id="inlineRadio2" value="false" />
-            <label className="form-check-label" htmlFor="inlineRadio2">False</label>
-          </div>
+          {
+            this.props.question.answers.map(a => 
+              <div className="form-check" key={a.answerId}>
+                <input 
+                  className="form-check-input" 
+                  type="radio" 
+                  name={`q${this.state.question.id}`}
+                  value={a.answerId}
+                  id={`a${a.answerId}`}
+                />
+                <label className="form-check-label" htmlFor={`a${a.answerId}`}>{a.text}</label>
+              </div>
+            )
+          }
           <button type="submit" className="btn btn-primary btn-sm">Submit</button>
         </form>
       </div>
