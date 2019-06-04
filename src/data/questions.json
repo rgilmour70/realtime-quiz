@@ -1,0 +1,52 @@
+[
+	{
+		"id" : 1,
+		"type" : "multipleChoice",
+		"text" : "Before it is published, an article in a scholarly journal must be reviewed by: ",
+		"answers" : [
+			{
+				"answerId" : 1,
+				"text" : "The English peerage",
+				"isCorrect" : false,
+				"response" : "No."
+			},
+			{
+				"answerId" : 2,
+				"text" : "Prince",
+				"isCorrect" : false,
+				"response" : "Sadly, no."
+			},
+			{
+				"answerId" : 3,
+				"text" : "Some academic randos",
+				"isCorrect" : true,
+				"response" : "Sadly, yes."
+			},
+			{
+				"answerId" : 4,
+				"text" : "Only the journal's editor-in-chief",
+				"isCorrect" : false,
+				"response" : "No."
+			}
+		]
+	},
+	{
+		"id" : 2,
+		"type" : "multipleChoice",
+		"text" : "Puppies are cute. (T/F)",
+		"answers" : [
+			{
+				"answerId" : 1,
+				"text" : "True",
+				"isCorrect" : true,
+				"response" : "Yes. Yes they are."
+			},
+			{
+				"answerId" : 2,
+				"text" : "False",
+				"isCorrect" : false,
+				"response" : "You're a monster."
+			}
+		]
+	}
+]
