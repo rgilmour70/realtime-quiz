@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Quiz from './Quiz';
 import Answers from './Answers';
-import question from '../utils/dataService';
+import { getSelectedContent } from '../utils/dataService';
 
 class App extends Component {
   constructor(props) {
@@ -34,8 +34,9 @@ class App extends Component {
       });
     });
 
-    const activityNumber = parseInt(this.getUrlVars()['q']);
-    this.setState({ activityNumber : activityNumber });
+    const question = getSelectedContent();
+    console.log(question);
+    
   }
 
   handleAddAnswer(answer) {
@@ -44,12 +45,6 @@ class App extends Component {
         answers: prevState.answers.concat(answer)
       };
     });
-  }
-
-  getUrlVars() {
-    let vars = {};
-    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) => { vars[key] = value });
-    return vars;
   }
 
   render() {
