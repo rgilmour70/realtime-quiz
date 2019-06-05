@@ -48,7 +48,7 @@ class App extends Component {
     return (
       <div className="container">
         <Quiz handleAddAnswer={this.handleAddAnswer} {...this.state} />
-        <Answers answers={this.state.answers} />
+        <Answers {...this.state} />
       </div>
     );
   }
