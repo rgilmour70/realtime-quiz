@@ -5,7 +5,8 @@ import { XYPlot, VerticalBarSeries, HorizontalGridLines, XAxis, YAxis } from 're
 
 const Answers = (props) => {
 
-  //console.log(props);
+  // console.log(props);
+  const type = props.question.type;
 
   let data = [];
 

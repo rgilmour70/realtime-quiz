@@ -5,7 +5,8 @@ class Quiz extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      question: this.props.question
+      question: this.props.question,
+      type: this.props.question.type
     }
     this.addAnswer = this.addAnswer.bind(this);
   }
@@ -13,6 +14,8 @@ class Quiz extends Component {
   addAnswer(e) {
 
     e.preventDefault();
+
+    console.log(this.state.type);
 
     // Get the value of the anwer
     const answer = e.target.elements.q1.value.trim();
