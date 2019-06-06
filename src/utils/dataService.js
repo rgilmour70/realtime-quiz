@@ -9,7 +9,7 @@ const getUrlVars = () => {
 }
 
 export function getSelectedContent() {
-	const activityNumber = parseInt(getUrlVars()['q']);
+	const activityNumber = parseInt(getUrlVars()['q']) || 1;
 	const question = questions.filter(q => q.id === activityNumber)[0];
 	return question;
 }
