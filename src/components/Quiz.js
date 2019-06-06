@@ -15,11 +15,8 @@ class Quiz extends Component {
 
     e.preventDefault();
 
-    console.log(this.state.type);
-
-    // Get the value of the anwer
+    // Get the value of the answer
     const answer = e.target.elements.q1.value.trim();
-    //console.log(answer);
 
     // Make sure name boxes are filled
     if (answer) {
