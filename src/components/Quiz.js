@@ -37,9 +37,9 @@ class Quiz extends Component {
   render() {
 
     return (
-      <div>
-        <p className="question">{this.state.question.text}</p>
-        <form onSubmit={this.addAnswer}>
+      <div className="q-and-a">
+        <p className="question-text">{this.state.question.text}</p>
+        <form onSubmit={this.addAnswer} className="answer-form">
           {
             this.props.question.answers.map(a => 
               <div className="form-check" key={a.answerId}>
@@ -54,7 +54,7 @@ class Quiz extends Component {
               </div>
             )
           }
-          <button type="submit" className="btn btn-primary btn-sm">Submit</button>
+          <button type="submit" className="btn btn-primary">Submit</button>
         </form>
       </div>
     );

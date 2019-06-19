@@ -1,0 +1,60 @@
+$primary: steelblue;
+
+body {
+	background-color: lightcyan !important;
+}
+
+.main {
+	margin: 3em !important;
+}
+
+.q-and-a {
+	border: 3px solid $primary;
+	border-radius: 16px;
+	padding: 1.5em;
+	margin-bottom: 2em;
+}
+.question-text {
+	font-size: 1.5em;
+}
+
+.answer-form {
+	button {
+		margin-top: 1em;
+		background-color: steelblue !important;
+		border-color: steelblue !important;
+	}
+}
+
+/* Multiple choice */
+input[type='radio'] {
+  visibility: hidden;
+}
+
+input[type='radio'] + label {
+  padding: 0.2em 0.2em 0.2em 3em; 
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 1em;
+  font-size: 1.1em;
+  &::before {
+    content: '';
+    color: $primary;
+    position: absolute;
+    height: 31px;
+    width: 31px;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    border: 2px solid $primary;
+    border-radius: 50%;
+  }
+}
+
+input[type="radio"]:checked + label {
+  &::before {
+    line-height: 1.8em;
+    color: #fff;
+    background-color: $primary;
+  }
+}

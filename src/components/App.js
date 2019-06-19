@@ -46,7 +46,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container main">
         <Quiz handleAddAnswer={this.handleAddAnswer} {...this.state} />
         <Answers {...this.state} />
       </div>
