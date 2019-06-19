@@ -6,6 +6,7 @@ body {
 
 .main {
 	margin: 3em;
+  counter-reset: answerNumber;
 }
 
 .q-and-a {
@@ -36,9 +37,9 @@ input[type='radio'] + label {
   position: relative;
   cursor: pointer;
   margin-bottom: 1em;
-  //font-size: 1.1em;
   &::before {
-    content: '';
+    counter-increment: answerNumber;
+    content: counter(answerNumber);
     text-align: center;
     color: $primary;
     position: absolute;

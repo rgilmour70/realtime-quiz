@@ -35,8 +35,8 @@ const Answers = (props) => {
         yDomain={chartDomain}
         color="#4682B4"
       >
-        <XAxis />
-        <YAxis />
+        <XAxis style={{stroke: 'steelblue'}} />
+        <YAxis style={{stroke: 'steelblue'}} />
         <HorizontalGridLines />
         <VerticalBarSeries data={data} />
       </XYPlot>
