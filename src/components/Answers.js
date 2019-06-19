@@ -6,7 +6,7 @@ import { XYPlot, VerticalBarSeries, HorizontalGridLines, XAxis, YAxis } from 're
 const Answers = (props) => {
 
   // console.log(props);
-  const type = props.question.type;
+  // const type = props.question.type;
 
   let data = [];
 
@@ -16,8 +16,14 @@ const Answers = (props) => {
     data.push(dataElement);
   });
 
-  const chartWidth = 300;
-  const chartHeight = 200;
+  const windowWidth = window.innerWidth;
+  let chartWidth = 0;
+  if (windowWidth <= 700) {
+    chartWidth = 0.8 * windowWidth;
+  } else {
+    chartWidth = 0.6 * windowWidth;
+  }
+  const chartHeight = 300;
   const chartDomain = [0, 40]; // max class size?
 
   return (
@@ -27,6 +33,7 @@ const Answers = (props) => {
         width={chartWidth}
         height={chartHeight}
         yDomain={chartDomain}
+        color="#4682B4"
       >
         <XAxis />
         <YAxis />

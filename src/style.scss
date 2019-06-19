@@ -5,7 +5,7 @@ body {
 }
 
 .main {
-	margin: 3em !important;
+	margin: 3em;
 }
 
 .q-and-a {
@@ -15,7 +15,7 @@ body {
 	margin-bottom: 2em;
 }
 .question-text {
-	font-size: 1.5em;
+	font-size: 1.4em;
 }
 
 .answer-form {
@@ -36,9 +36,10 @@ input[type='radio'] + label {
   position: relative;
   cursor: pointer;
   margin-bottom: 1em;
-  font-size: 1.1em;
+  //font-size: 1.1em;
   &::before {
     content: '';
+    text-align: center;
     color: $primary;
     position: absolute;
     height: 31px;
@@ -57,4 +58,10 @@ input[type="radio"]:checked + label {
     color: #fff;
     background-color: $primary;
   }
+}
+
+@media (max-width: 800) {
+	.main {
+		margin: 0.5em !important;
+	}
 }
