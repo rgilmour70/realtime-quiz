@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import MultipleChoice from './MultipleChoice';
+import Range from './Range';
 
 class Quiz extends Component {
 
@@ -35,31 +37,17 @@ class Quiz extends Component {
   }
 
   render() {
-
-    return (
-      <div className="q-and-a">
-        <p className="question-text">{this.state.question.text}</p>
-        <form onSubmit={this.addAnswer} className="answer-form">
-          {
-            this.props.question.answers.map(a => 
-              <div className="form-check" key={a.answerId}>
-                <input 
-                  className="form-check-input" 
-                  type="radio" 
-                  name={`q${this.state.question.id}`}
-                  value={a.answerId}
-                  id={`a${a.answerId}`}
-                />
-                <label className="form-check-label" htmlFor={`a${a.answerId}`}>{a.text}</label>
-              </div>
-            )
-          }
-          <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
-      </div>
-    );
+    if (this.state.type === 'multipleChoice') {
+      return (
+        <MultipleChoice {...this.state} addAnswer={this.addAnswer} />
+      );
+    } else if (this.state.type === 'range') {
+      return (
+        <Range {...this.state} addAnswer={this.addAnswer} />
+      );
+    }
   }
-  
+
 }
 
 export default Quiz;

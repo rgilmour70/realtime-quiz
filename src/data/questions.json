@@ -48,5 +48,19 @@
 				"response" : "You're a monster."
 			}
 		]
+	},
+	{
+		"id" : 3,
+		"type" : "range",
+		"text" : "How much do you love ice cream?",
+		"scale" : {
+			"0" : "I don’t like ice cream", 
+			"5" : "I kinda like ice cream", 
+			"10" : "I named my sons Ben and Jerry"
+		},
+		"minCorrect" : 7,
+		"maxCorrect" : 10,
+		"correctResponse" : "You are correct! You love ice cream!",
+		"incorrectResponse" : "Incorrect. You love ice cream!"
 	}
 ]

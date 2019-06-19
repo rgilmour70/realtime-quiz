@@ -5,11 +5,10 @@ import { XYPlot, VerticalBarSeries, HorizontalGridLines, XAxis, YAxis } from 're
 
 const Answers = (props) => {
 
-  // console.log(props);
-  // const type = props.question.type;
-
   let data = [];
 
+
+  // this works for mc, not range
   props.question.answers.forEach(a => {
     let tally = props.answers.filter(ua => parseInt(ua.answer) === a.answerId).length;
     let dataElement = {x: a.answerId, y: tally};
