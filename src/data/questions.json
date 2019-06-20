@@ -54,9 +54,9 @@
 		"type" : "range",
 		"text" : "How much do you love ice cream?",
 		"scale" : {
-			"0" : "I don’t like ice cream", 
-			"5" : "I kinda like ice cream", 
-			"10" : "I named my sons Ben and Jerry"
+			"0" : "not much", 
+			"5" : "kinda", 
+			"10" : "lots"
 		},
 		"minCorrect" : 7,
 		"maxCorrect" : 10,

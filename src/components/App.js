@@ -1,20 +1,40 @@
 import React, { Component } from 'react';
 import Quiz from './Quiz';
-import Answers from './Answers';
+import AnswersChart from './AnswersChart';
 import { getSelectedContent } from '../utils/dataService';
 
 class App extends Component {
   constructor(props) {
     super(props);
-
-    this.handleAddAnswer = this.handleAddAnswer.bind(this);
     this.state = {
+      userAnswers: [],
       answers: [],
       question: getSelectedContent()
     }
   }
 
   componentDidMount() {
+
+    if (this.state.question.type === 'range') {
+
+      let answersFromRange = [];
+      for (const k in this.state.question.scale) {
+        answersFromRange.push(parseInt(k));
+        answersFromRange.sort((a, b) => a - b);
+      } 
+      const min = answersFromRange[0];
+      const max = answersFromRange[answersFromRange.length-1];
+      answersFromRange = [];
+      for (let i=min; i<=max; i++) {
+        answersFromRange.push({answerId:i});
+      }
+      this.setState({ answers: answersFromRange });
+
+    } else if (this.state.question.type === 'multipleChoice') {
+
+      this.setState({ answers: this.state.question.answers });
+    }
+
     /*global Ably*/
     const channel = Ably.channels.get('answers');
 
@@ -22,9 +42,9 @@ class App extends Component {
     channel.once('attached', () => {
       channel.history((err, page) => {
         // create a new array with answers from users
-        const answers = Array.from(page.items, item => item.data)
+        const userAnswers = Array.from(page.items, item => item.data)
 
-        this.setState({ answers });
+        this.setState({ userAnswers });
 
         // from Tom at Ably
         channel.subscribe((msg) => {
@@ -36,10 +56,28 @@ class App extends Component {
 
   }
 
-  handleAddAnswer(answer) {
+  addAnswer = (userAnswer) => {
+    // console.log(userAnswer);
+    this.handleAddAnswer(userAnswer);
+    // Make sure name boxes are filled
+    // if (userAnswer) {
+    //   const userAnswerObject = { userAnswer };
+
+    //   // Publish answer
+    //   /*global Ably*/
+    //   const channel = Ably.channels.get('answers');
+    //   channel.publish('add_answer', userAnswerObject, err => {
+    //     if (err) {
+    //       console.log('Unable to publish message; err = ' + err.message);
+    //     }
+    //   });
+    // }
+  }
+
+  handleAddAnswer = (userAnswer) => {
     this.setState(prevState => {
       return {
-        answers: prevState.answers.concat(answer)
+        userAnswers: prevState.userAnswers.concat(userAnswer)
       };
     });
   }
@@ -47,8 +85,8 @@ class App extends Component {
   render() {
     return (
       <div className="container main">
-        <Quiz handleAddAnswer={this.handleAddAnswer} {...this.state} />
-        <Answers {...this.state} />
+        <Quiz addAnswer={this.addAnswer} {...this.state} />
+        <AnswersChart {...this.state} />
       </div>
     );
   }

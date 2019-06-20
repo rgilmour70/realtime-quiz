@@ -3,17 +3,20 @@ import React, { Component } from 'react';
 import '../../node_modules/react-vis/dist/style.css';
 import { XYPlot, VerticalBarSeries, HorizontalGridLines, XAxis, YAxis } from 'react-vis';
 
-const Answers = (props) => {
+const AnswersChart = (props) => {
+
+  //console.log(props);
 
   let data = [];
 
-
-  // this works for mc, not range
-  props.question.answers.forEach(a => {
-    let tally = props.answers.filter(ua => parseInt(ua.answer) === a.answerId).length;
+  props.answers.forEach(a => {
+    console.log(a);
+    let tally = props.userAnswers.filter(ua => parseInt(ua) === a.answerId).length;
     let dataElement = {x: a.answerId, y: tally};
     data.push(dataElement);
   });
+
+  console.log(data);
 
   const windowWidth = window.innerWidth;
   let chartWidth = 0;
@@ -44,4 +47,4 @@ const Answers = (props) => {
 }
 
 
-export default Answers;
+export default AnswersChart;

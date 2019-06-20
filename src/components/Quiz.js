@@ -8,32 +8,11 @@ class Quiz extends Component {
     super(props);
     this.state = {
       question: this.props.question,
-      type: this.props.question.type
+      type: this.props.question.type,
+      scale: this.props.question.scale,
+      answers: this.props.answers,
     }
-    this.addAnswer = this.addAnswer.bind(this);
-  }
-
-  addAnswer(e) {
-
-    e.preventDefault();
-
-    // Get the value of the answer
-    const answer = e.target.elements.q1.value.trim();
-
-    // Make sure name boxes are filled
-    if (answer) {
-      const answerObject = { answer };
-
-      // Publish answer
-      /*global Ably*/
-      const channel = Ably.channels.get('answers');
-      channel.publish('add_answer', answerObject, err => {
-        if (err) {
-          console.log('Unable to publish message; err = ' + err.message);
-        }
-      });
-
-    }
+    this.addAnswer = this.props.addAnswer.bind(this);
   }
 
   render() {

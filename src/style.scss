@@ -18,14 +18,16 @@ body {
 .question-text {
 	font-size: 1.4em;
 }
-
-.answer-form {
-	button {
-		margin-top: 1em;
-		background-color: steelblue !important;
-		border-color: steelblue !important;
-	}
+.btn-primary {
+  background-color: $primary !important;
+  border-color: $primary !important;
 }
+
+.answer-form button {
+	margin-top: 1em;
+}
+
+
 
 /* Multiple choice */
 input[type='radio'] {
@@ -59,6 +61,37 @@ input[type="radio"]:checked + label {
     color: #fff;
     background-color: $primary;
   }
+}
+
+/* Styles for react-rangeslider */
+
+.slider .btn-primary {
+  margin-top: 2em;
+}
+.rangeslider-horizontal .rangeslider__handle {
+  border-radius: 5px !important;
+  border-color: #fff !important;
+  width: 20px !important;
+  height: 30px !important;
+  background-color: #fff !important;
+  &::after {
+    content: '' !important;
+    height: 0 !important;
+    width: 0;
+  }
+}
+
+.rangeslider-horizontal .rangeslider__fill {
+  background-color: $primary !important;
+}
+
+.rangeslider__label-item:first-of-type {
+  padding-right: 4em;
+  // white-space: nowrap;
+}
+.rangeslider__label-item:last-of-type {
+  margin-left: 2em;
+  white-space: nowrap;
 }
 
 @media (max-width: 800) {
