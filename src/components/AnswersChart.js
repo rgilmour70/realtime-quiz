@@ -10,13 +10,10 @@ const AnswersChart = (props) => {
   let data = [];
 
   props.answers.forEach(a => {
-    console.log(a);
     let tally = props.userAnswers.filter(ua => parseInt(ua) === a.answerId).length;
     let dataElement = {x: a.answerId, y: tally};
     data.push(dataElement);
   });
-
-  console.log(data);
 
   const windowWidth = window.innerWidth;
   let chartWidth = 0;

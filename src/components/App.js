@@ -49,29 +49,28 @@ class App extends Component {
         // from Tom at Ably
         channel.subscribe((msg) => {
           const answerObject = msg['data'];
-          this.handleAddAnswer(answerObject);
+          this.addAnswer(answerObject);
         })
       });
     });
-
   }
 
   addAnswer = (userAnswer) => {
-    // console.log(userAnswer);
-    this.handleAddAnswer(userAnswer);
-    // Make sure name boxes are filled
-    // if (userAnswer) {
-    //   const userAnswerObject = { userAnswer };
 
-    //   // Publish answer
-    //   /*global Ably*/
-    //   const channel = Ably.channels.get('answers');
-    //   channel.publish('add_answer', userAnswerObject, err => {
-    //     if (err) {
-    //       console.log('Unable to publish message; err = ' + err.message);
-    //     }
-    //   });
-    // }
+    // this.handleAddAnswer(userAnswer);
+
+    if (userAnswer) {
+      const userAnswerObject = { userAnswer };
+
+      // Publish answer
+      /*global Ably*/
+      const channel = Ably.channels.get('answers');
+      channel.publish('add_answer', userAnswerObject, err => {
+        if (err) {
+          console.log('Unable to publish message; err = ' + err.message);
+        }
+      });
+    }
   }
 
   handleAddAnswer = (userAnswer) => {
