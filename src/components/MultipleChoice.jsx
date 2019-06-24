@@ -14,7 +14,10 @@ class MultipleChoice extends Component {
 
   handleMcAnswer = (e) => {
     e.preventDefault();
-    const userAnswer = e.currentTarget.elements.q1.value.trim();
+//    const userAnswer = e.currentTarget.elements.q1.value.trim();
+    const q = 'q'+this.state.questionId;
+    const userAnswerPath = `e.currentTarget.elements.${q}.value.trim()`;
+    const userAnswer = eval(userAnswerPath);
 
     /*global Ably*/
     const channel = Ably.channels.get('answers');

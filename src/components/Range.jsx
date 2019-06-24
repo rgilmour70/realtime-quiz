@@ -9,16 +9,22 @@ class Range extends Component {
     this.state = {
       sliderValue : 0,
       questionId : this.props.id,
-      minCorrect: this.props.minCorrect,
       scale : this.props.scale,
       answers: this.props.answers,
       questionText: this.props.question.text,
     };
-    this.addAnswer = this.props.addAnswer.bind(this);
   }
   
-  onFinish = () => {
-    this.addAnswer(this.state.sliderValue);
+  handleRangeAnswer = () => {
+    const rangeValue = String(this.state.sliderValue);
+
+    /*global Ably*/
+    const channel = Ably.channels.get('answers');
+    channel.publish('add_answer', rangeValue, err => {
+      if (err) {
+        console.log('Unable to publish message; err = ' + err.message);
+      }
+    });
   }
 
   onMove = (value) => {
@@ -37,7 +43,7 @@ class Range extends Component {
           onChange={ this.onMove }
           labels={this.state.scale}
         />
-        <button className="btn btn-primary" onClick={this.onFinish}>Submit</button>
+        <button className="btn btn-primary" onClick={this.handleRangeAnswer}>Submit</button>
       </div>
     );
   }
