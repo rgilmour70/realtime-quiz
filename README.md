@@ -8,6 +8,7 @@ import { Realtime } from 'ably/browser/static/ably-commonjs.js';
 
 window.Ably = new Realtime('YOUR_API_KEY_GOES_HERE');
 ```
+Name is as `src/ably.js`
 
 ## Available Scripts
 
