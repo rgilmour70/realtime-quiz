@@ -15,6 +15,8 @@ class App extends Component {
 
   componentDidMount() {
 
+    // Populate answers (i.e., possible answers) based
+    // on question type
     if (this.state.question.type === 'range') {
 
       let answersFromRange = [];
@@ -35,6 +37,7 @@ class App extends Component {
       this.setState({ answers: this.state.question.answers });
     }
 
+    // Subscribe to Ably channel
     /*global Ably*/
     const channel = Ably.channels.get('answers');
 
@@ -49,36 +52,23 @@ class App extends Component {
         // from Tom at Ably
         channel.subscribe((msg) => {
           const answerObject = msg['data'];
-          this.addAnswer(answerObject);
+          this.handleAddAnswer(answerObject);
         })
       });
     });
   }
 
-  addAnswer = (userAnswer) => {
-
-    // this.handleAddAnswer(userAnswer);
-
-    if (userAnswer) {
-      const userAnswerObject = { userAnswer };
-
-      // Publish answer
-      /*global Ably*/
-      const channel = Ably.channels.get('answers');
-      channel.publish('add_answer', userAnswerObject, err => {
-        if (err) {
-          console.log('Unable to publish message; err = ' + err.message);
-        }
+  handleAddAnswer = (userAnswer) => {
+    // expects a string
+    if (typeof userAnswer !== 'string') {
+      console.log('handleAddAnswer() wants a string');
+    } else {
+      this.setState(prevState => {
+        return {
+          userAnswers: prevState.userAnswers.concat(userAnswer)
+        };
       });
     }
-  }
-
-  handleAddAnswer = (userAnswer) => {
-    this.setState(prevState => {
-      return {
-        userAnswers: prevState.userAnswers.concat(userAnswer)
-      };
-    });
   }
 
   render() {

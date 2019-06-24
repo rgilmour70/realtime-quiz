@@ -9,13 +9,20 @@ class MultipleChoice extends Component {
   		questionText: this.props.question.text,
   		questionId: this.props.question.id,
   	};
-  	this.addAnswer = this.props.addAnswer.bind(this);
+  	// this.addAnswer = this.props.addAnswer.bind(this);
   }
 
   handleMcAnswer = (e) => {
     e.preventDefault();
-    const ua = e.currentTarget.elements.q1.value.trim();
-    this.addAnswer(ua);
+    const userAnswer = e.currentTarget.elements.q1.value.trim();
+
+    /*global Ably*/
+    const channel = Ably.channels.get('answers');
+    channel.publish('add_answer', userAnswer, err => {
+      if (err) {
+        console.log('Unable to publish message; err = ' + err.message);
+      }
+    });
   }
 
   render() {
