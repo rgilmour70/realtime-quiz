@@ -17,9 +17,10 @@ class Range extends Component {
   
   handleRangeAnswer = () => {
     const rangeValue = String(this.state.sliderValue);
+    const channelName = this.props.channelName;
 
     /*global Ably*/
-    const channel = Ably.channels.get('answers');
+    const channel = Ably.channels.get(channelName);
     channel.publish('add_answer', rangeValue, err => {
       if (err) {
         console.log('Unable to publish message; err = ' + err.message);

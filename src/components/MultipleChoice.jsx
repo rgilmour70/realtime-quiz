@@ -18,9 +18,10 @@ class MultipleChoice extends Component {
     const q = 'q'+this.state.questionId;
     const userAnswerPath = `e.currentTarget.elements.${q}.value.trim()`;
     const userAnswer = eval(userAnswerPath);
+    const channelName = this.props.channelName;
 
     /*global Ably*/
-    const channel = Ably.channels.get('answers');
+    const channel = Ably.channels.get(channelName);
     channel.publish('add_answer', userAnswer, err => {
       if (err) {
         console.log('Unable to publish message; err = ' + err.message);

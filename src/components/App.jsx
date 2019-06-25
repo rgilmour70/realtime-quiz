@@ -9,11 +9,23 @@ class App extends Component {
     this.state = {
       userAnswers: [],
       answers: [],
-      question: getSelectedContent()
+      question: getSelectedContent(),
+      questionId: 0,
+      channelName: '',
     }
   }
 
   componentDidMount() {
+
+    // Determine question id and add to state
+    const questionId = this.state.question.id;
+    this.setState({questionId});
+
+    // Make channel name based on questionId
+    // Add this to state
+    const channelName = `ch_${questionId}`;
+    this.setState({channelName});
+
 
     // Populate answers (i.e., possible answers) based
     // on question type
@@ -39,7 +51,7 @@ class App extends Component {
 
     // Subscribe to Ably channel
     /*global Ably*/
-    const channel = Ably.channels.get('answers');
+    const channel = Ably.channels.get(channelName);
 
     channel.attach();
     channel.once('attached', () => {
@@ -60,21 +72,17 @@ class App extends Component {
 
   handleAddAnswer = (userAnswer) => {
     // expects a string
-    if (typeof userAnswer !== 'string') {
-      console.log('handleAddAnswer() wants a string');
-    } else {
-      this.setState(prevState => {
-        return {
-          userAnswers: prevState.userAnswers.concat(userAnswer)
-        };
-      });
-    }
+    this.setState(prevState => {
+      return {
+        userAnswers: prevState.userAnswers.concat(userAnswer)
+      };
+    });
   }
 
   render() {
     return (
       <div className="container main">
-        <Quiz addAnswer={this.addAnswer} {...this.state} />
+        <Quiz {...this.state} />
         <AnswersChart {...this.state} />
       </div>
     );

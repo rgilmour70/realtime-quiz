@@ -17,11 +17,11 @@ class Quiz extends Component {
   render() {
     if (this.state.type === 'multipleChoice') {
       return (
-        <MultipleChoice {...this.state} />
+        <MultipleChoice {...this.state} channelName={this.props.channelName} />
       );
     } else if (this.state.type === 'range') {
       return (
-        <Range {...this.state} />
+        <Range {...this.state} channelName={this.props.channelName} />
       );
     }
   }
