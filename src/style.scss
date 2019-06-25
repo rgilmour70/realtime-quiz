@@ -94,8 +94,11 @@ input[type="radio"]:checked + label {
   white-space: nowrap;
 }
 
-@media (max-width: 800) {
+@media (max-width: 800px) {
 	.main {
-		margin: 0.5em !important;
+		margin: 0.2em !important;
 	}
+  .question-text {
+    font-size: 1.1em !important;
+  }
 }

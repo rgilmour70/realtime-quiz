@@ -17,7 +17,6 @@ class MultipleChoice extends Component {
 //    const userAnswer = e.currentTarget.elements.q1.value.trim();
     const q = 'q'+this.state.questionId;
     const userAnswer = e.currentTarget.elements[q].value.trim();
-    console.log(userAnswer);
     const channelName = this.props.channelName;
 
     /*global Ably*/
