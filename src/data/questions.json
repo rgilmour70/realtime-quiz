@@ -33,7 +33,7 @@
 	{
 		"id" : 2,
 		"type" : "multipleChoice",
-		"text" : "Puppies are cute. (T/F)",
+		"text" : "Puppies are not cute. (T/F)",
 		"answers" : [
 			{
 				"answerId" : 1,
@@ -54,8 +54,8 @@
 		"type" : "range",
 		"text" : "How much do you love ice cream?",
 		"scale" : {
-			"0" : "not much", 
-			"5" : "kinda", 
+			"0" : "not much",
+			"5" : "kinda",
 			"10" : "lots"
 		},
 		"minCorrect" : 7,
