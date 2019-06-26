@@ -52,7 +52,7 @@
 	{
 		"id" : 3,
 		"type" : "range",
-		"text" : "How much do you love ice cream?",
+		"text" : "How much do you love ice cream cones?",
 		"scale" : {
 			"0" : "not much",
 			"5" : "kinda",
