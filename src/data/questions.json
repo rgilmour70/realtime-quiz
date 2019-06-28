@@ -14,7 +14,7 @@
 				"answerId" : 2,
 				"text" : "Prince",
 				"isCorrect" : false,
-				"response" : "Sadly, no."
+				"response" : "Nope"
 			},
 			{
 				"answerId" : 3,
@@ -33,7 +33,7 @@
 	{
 		"id" : 2,
 		"type" : "multipleChoice",
-		"text" : "Puppies are cute. (T/F)",
+		"text" : "Puppies are not cute. (T/F)",
 		"answers" : [
 			{
 				"answerId" : 1,
@@ -45,17 +45,17 @@
 				"answerId" : 2,
 				"text" : "False",
 				"isCorrect" : false,
-				"response" : "You're a monster."
+				"response" : "You're a purpley green people eating monster."
 			}
 		]
 	},
 	{
 		"id" : 3,
 		"type" : "range",
-		"text" : "How much do you love ice cream?",
+		"text" : "How much do you love ice cream cones?",
 		"scale" : {
-			"0" : "not much", 
-			"5" : "kinda", 
+			"0" : "not much",
+			"5" : "kinda",
 			"10" : "lots"
 		},
 		"minCorrect" : 7,
