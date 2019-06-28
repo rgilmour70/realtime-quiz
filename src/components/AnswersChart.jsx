@@ -5,13 +5,18 @@ import { XYPlot, VerticalBarSeries, HorizontalGridLines, XAxis, YAxis } from 're
 
 const AnswersChart = (props) => {
 
-  // console.log(props);
+  console.log(props);
 
   const data = [];
 
   props.answers.forEach(a => {
-    let tally = props.userAnswers.filter(ua => parseInt(ua) === a.answerId).length;
-    let dataElement = {x: a.answerId, y: tally};
+    const tally = props.userAnswers.filter(ua => parseInt(ua) === a.answerId).length;
+    let dataElement = {};
+    if (props.type === 'trueFalse') {
+      dataElement = { x: a.text, y: tally };
+    } else {
+      dataElement = { x: a.answerId, y: tally };
+    }
     data.push(dataElement);
   });
 
@@ -34,8 +39,8 @@ const AnswersChart = (props) => {
         yDomain={chartDomain}
         color="#4682B4"
       >
-        <XAxis style={{stroke: 'steelblue'}} />
-        <YAxis style={{stroke: 'steelblue'}} />
+        <XAxis style={{ stroke: 'steelblue' }} />
+        <YAxis style={{ stroke: 'steelblue' }} />
         <HorizontalGridLines />
         <VerticalBarSeries data={data} />
       </XYPlot>

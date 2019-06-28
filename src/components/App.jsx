@@ -51,6 +51,10 @@ class App extends Component {
     } else if (this.state.question.type === 'multipleChoice') {
 
       this.setState({ answers: this.state.question.answers });
+
+    } else if (this.state.question.type === 'trueFalse') {
+      
+      this.setState({ answers: this.state.question.answers });
     }
 
     // Subscribe to Ably channel

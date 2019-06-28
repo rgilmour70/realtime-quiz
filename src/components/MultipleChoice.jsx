@@ -9,12 +9,10 @@ class MultipleChoice extends Component {
   		questionText: this.props.question.text,
   		questionId: this.props.question.id,
   	};
-  	// this.addAnswer = this.props.addAnswer.bind(this);
   }
 
   handleMcAnswer = (e) => {
     e.preventDefault();
-//    const userAnswer = e.currentTarget.elements.q1.value.trim();
     const q = 'q'+this.state.questionId;
     const userAnswer = e.currentTarget.elements[q].value.trim();
     const channelName = this.props.channelName;
