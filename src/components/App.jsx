@@ -26,6 +26,10 @@ class App extends Component {
     const channelName = `ch_${questionId}`;
     this.setState({channelName});
 
+    // Determine question type and add to state
+    const type = this.state.question.type;
+    this.setState({type});
+
 
     // Populate answers (i.e., possible answers) based
     // on question type

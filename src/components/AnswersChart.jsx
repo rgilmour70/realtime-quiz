@@ -5,9 +5,9 @@ import { XYPlot, VerticalBarSeries, HorizontalGridLines, XAxis, YAxis } from 're
 
 const AnswersChart = (props) => {
 
-  //console.log(props);
+  // console.log(props);
 
-  let data = [];
+  const data = [];
 
   props.answers.forEach(a => {
     let tally = props.userAnswers.filter(ua => parseInt(ua) === a.answerId).length;

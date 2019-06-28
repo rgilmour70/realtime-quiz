@@ -1,31 +1,18 @@
+// eslint-disable-next-line
 import React, { Component } from 'react';
-import MultipleChoice from './MultipleChoice';
+import MultipleChoice from './MultipleChoice2';
 import Range from './Range';
 
-class Quiz extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      question: this.props.question,
-      type: this.props.question.type,
-      scale: this.props.question.scale,
-      answers: this.props.answers,
-    }
+const Quiz = (props) => {
+  const { type, channelName } = props;
+  if (type === 'multipleChoice') {
+    return (
+      <MultipleChoice {...props} channelName={channelName} />
+    );
   }
-
-  render() {
-    if (this.state.type === 'multipleChoice') {
-      return (
-        <MultipleChoice {...this.state} channelName={this.props.channelName} />
-      );
-    } else if (this.state.type === 'range') {
-      return (
-        <Range {...this.state} channelName={this.props.channelName} />
-      );
-    }
-  }
-
-}
+  return (
+    <Range {...props} channelName={channelName} />
+  );
+};
 
 export default Quiz;
