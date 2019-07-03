@@ -9,7 +9,8 @@
     "react-dom": "^16.8.6",
     "react-rangeslider": "^2.2.0",
     "react-scripts": "3.0.1",
-    "react-vis": "^1.11.7"
+    "react-vis": "^1.11.7",
+    "react-wordcloud": "^1.0.8"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -5,8 +5,6 @@ import { XYPlot, VerticalBarSeries, HorizontalGridLines, XAxis, YAxis } from 're
 
 const AnswersChart = (props) => {
 
-  console.log(props);
-
   const data = [];
 
   props.answers.forEach(a => {

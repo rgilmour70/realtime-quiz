@@ -48,12 +48,8 @@ class App extends Component {
       }
       this.setState({ answers: answersFromRange });
 
-    } else if (this.state.question.type === 'multipleChoice') {
+    } else if (this.state.question.type === 'multipleChoice' || this.state.question.type === 'trueFalse') {
 
-      this.setState({ answers: this.state.question.answers });
-
-    } else if (this.state.question.type === 'trueFalse') {
-      
       this.setState({ answers: this.state.question.answers });
     }
 
@@ -79,7 +75,6 @@ class App extends Component {
   }
 
   handleAddAnswer = (userAnswer) => {
-    // expects a string
     this.setState(prevState => {
       return {
         userAnswers: prevState.userAnswers.concat(userAnswer)
@@ -88,13 +83,21 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.question.type !== 'textAnswer') {
+      return (
+        <div className="container main">
+          <Quiz {...this.state} />
+          <AnswersChart {...this.state} />
+        </div>
+      );
+    }
     return (
       <div className="container main">
         <Quiz {...this.state} />
-        <AnswersChart {...this.state} />
       </div>
     );
   }
+
 }
 
 export default App;
