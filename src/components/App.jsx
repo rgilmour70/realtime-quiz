@@ -67,8 +67,9 @@ class App extends Component {
 
         // from Tom at Ably
         channel.subscribe((msg) => {
-          const answerObject = msg['data'];
-          this.handleAddAnswer(answerObject);
+          const answerString = msg['data'];
+          console.log(answerString);
+          this.handleAddAnswer(answerString);
         })
       });
     });

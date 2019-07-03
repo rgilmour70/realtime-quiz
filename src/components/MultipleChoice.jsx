@@ -27,7 +27,6 @@ class MultipleChoice extends Component {
   }
 
   render() {
-
     return (
       <div className="q-and-a">
         <p className="question-text">{this.state.questionText}</p>

@@ -17,21 +17,14 @@ class TextAnswer extends Component {
   handleWordEntry = (e) => {
     e.preventDefault();
     const w = e.currentTarget[0].value.toLowerCase().trim();
+    e.currentTarget[0].value = '';
+
     let newWordObj = {'text': w, 'value': 1};
-
-    const channelName = this.props.channelName;
-
-    /*global Ably*/
-    const channel = Ably.channels.get(channelName);
-    channel.publish('add_answer', newWordObj, err => {
-      if (err) {
-        console.log('Unable to publish message; err = ' + err.message);
-      }
-    });
 
     if (!this.state.words || !this.state.words.length) {
       // we have no words so far
       this.setState({words: [newWordObj]});
+
     } else {
       // we already have some words
       const currentWords = this.state.words;
@@ -58,6 +51,16 @@ class TextAnswer extends Component {
       this.setState({words: currentWords});
     }
     console.log(this.state.words);
+    
+    const channelName = this.props.channelName;
+
+    /*global Ably*/
+    const channel = Ably.channels.get(channelName);
+    channel.publish('add_answer', this.state.words, err => {
+      if (err) {
+        console.log('Unable to publish message; err = ' + err.message);
+      }
+    });
   }
 
   render() {
