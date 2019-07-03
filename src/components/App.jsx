@@ -67,8 +67,7 @@ class App extends Component {
 
         // from Tom at Ably
         channel.subscribe((msg) => {
-          const answerString = msg['data'];
-          console.log(answerString);
+          const answerString = msg.data;
           this.handleAddAnswer(answerString);
         })
       });
@@ -76,6 +75,7 @@ class App extends Component {
   }
 
   handleAddAnswer = (userAnswer) => {
+    console.log(typeof userAnswer);
     this.setState(prevState => {
       return {
         userAnswers: prevState.userAnswers.concat(userAnswer)
