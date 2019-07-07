@@ -6,47 +6,50 @@
 		"answers" : [
 			{
 				"answerId" : 1,
-				"text" : "All the lords and ladies of Westeros",
-				"isCorrect" : false,
-				"response" : "No."
+				"text" : "All the lords and ladies of Westeros"
 			},
 			{
 				"answerId" : 2,
-				"text" : "Prince",
-				"isCorrect" : false,
-				"response" : "Sadly, no."
+				"text" : "Prince"
 			},
 			{
 				"answerId" : 3,
-				"text" : "Some academic randos",
-				"isCorrect" : true,
-				"response" : "Sadly, yes."
+				"text" : "Some academic randos"
 			},
 			{
 				"answerId" : 4,
-				"text" : "Only the journal's editor-in-chief",
-				"isCorrect" : false,
-				"response" : "No."
+				"text" : "Only the journal's editor-in-chief"
 			}
 		]
 	},
 	{
 		"id" : 2,
-		"type" : "multipleChoice",
-		"text" : "Puppies are cute. (T/F)",
+		"type" : "trueFalse",
+		"text" : "Puppies are not cute.",
 		"answers" : [
 			{
 				"answerId" : 1,
-				"text" : "True",
-				"isCorrect" : true,
-				"response" : "Yes. Yes they are."
+				"text" : "True"
 			},
 			{
 				"answerId" : 2,
-				"text" : "False",
-				"isCorrect" : false,
-				"response" : "You're a monster."
+				"text" : "False"
 			}
 		]
+	},
+	{
+		"id" : 3,
+		"type" : "range",
+		"text" : "How much do you love ice cream cones?",
+		"scale" : {
+			"0" : "not much",
+			"5" : "kinda",
+			"10" : "lots"
+		}
+	},
+	{
+		"id" : 4,
+		"type" : "textAnswer",
+		"text" : "What is your favorite animal?"
 	}
 ]

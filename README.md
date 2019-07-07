@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Caution
+
+You'll need to set up an account with Ably and get an API key for this app to work. That file can look like this:
+```
+import { Realtime } from 'ably/browser/static/ably-commonjs.js';
+
+window.Ably = new Realtime('YOUR_API_KEY_GOES_HERE');
+```
+Name it as `src/ably.js`
+
 ## Available Scripts
 
 In the project directory, you can run:
