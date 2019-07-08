@@ -70,6 +70,7 @@ class TextAnswer extends Component {
         <ReactWordCloud
           options={{
             rotations: 0,
+            colors: ['#4682b4', '#ff8c42', '#ff3c38', '#a23e48'],
             fontSizes: [16, 36],
             fontFamily: 'sans-serif',
           }}

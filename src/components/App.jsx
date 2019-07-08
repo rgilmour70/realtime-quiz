@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Quiz from './Quiz';
 import AnswersChart from './AnswersChart';
+import Footer from './Footer';
 import { getSelectedContent } from '../utils/dataService';
 
 class App extends Component {
@@ -96,12 +97,14 @@ class App extends Component {
         <div className="container main">
           <Quiz {...this.state} />
           <AnswersChart {...this.state} />
+          <Footer />
         </div>
       );
     }
     return (
       <div className="container main">
         <Quiz {...this.state} />
+        <Footer />
       </div>
     );
   }
