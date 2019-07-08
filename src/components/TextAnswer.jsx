@@ -22,37 +22,30 @@ class TextAnswer extends Component {
 
     let newWordObj = {'text': w, 'value': 1};
 
-    if (!this.state.words || !this.state.words.length) {
-      // we have no words so far
-      this.setState({words: [newWordObj]});
+    const currentWords = this.state.words;
+    // let newWordObj = {};
+    let wordAlreadyPresent = false;
 
-    } else {
-      // we already have some words
-      const currentWords = this.state.words;
-      // let newWordObj = {};
-      let wordAlreadyPresent = false;
-
-      for (let wordObj of currentWords) {
-        if (wordObj.text.toLowerCase() === w) {
-          wordAlreadyPresent = true;
-          const i = currentWords.indexOf(wordObj);
-          let prevValue  = wordObj.value;
-          if (i > -1) {
-            currentWords.splice(i, 1);
-          }
-          newWordObj = {'text': w, 'value': prevValue+=1};
-          currentWords.push(newWordObj);
-          break;
+    for (let wordObj of currentWords) {
+      if (wordObj.text.toLowerCase() === w) {
+        wordAlreadyPresent = true;
+        const i = currentWords.indexOf(wordObj);
+        let prevValue  = wordObj.value;
+        if (i > -1) {
+          currentWords.splice(i, 1);
         }
-      }
-
-      if (!wordAlreadyPresent) {
+        newWordObj = {'text': w, 'value': prevValue+=1};
         currentWords.push(newWordObj);
+        break;
       }
-
-      this.setState({words: currentWords});
     }
-    
+
+    if (!wordAlreadyPresent) {
+      currentWords.push(newWordObj);
+    }
+
+    this.setState({words: currentWords});
+
     const channelName = this.props.channelName;
 
     /*global Ably*/

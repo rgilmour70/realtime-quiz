@@ -75,11 +75,19 @@ class App extends Component {
   }
 
   handleAddAnswer = (userAnswer) => {
-    this.setState(prevState => {
-      return {
-        userAnswers: prevState.userAnswers.concat(userAnswer)
-      };
-    });
+    if (Array.isArray(userAnswer)) {
+      this.setState(prevState => {
+        return { 
+          userAnswers: userAnswer 
+        };
+      });
+    } else {
+      this.setState(prevState => {
+        return {
+          userAnswers: prevState.userAnswers.concat(userAnswer)
+        };
+      });
+    }
   }
 
   render() {
