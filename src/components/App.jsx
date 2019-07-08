@@ -75,7 +75,6 @@ class App extends Component {
   }
 
   handleAddAnswer = (userAnswer) => {
-    console.log(typeof userAnswer);
     this.setState(prevState => {
       return {
         userAnswers: prevState.userAnswers.concat(userAnswer)

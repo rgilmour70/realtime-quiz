@@ -9,6 +9,7 @@ class TextAnswer extends Component {
     this.state = {
       questionText: this.props.question.text,
       questionId: this.props.question.id,
+      userAnswers: this.props.userAnswers,
       words: [],
     };
   }
@@ -48,9 +49,9 @@ class TextAnswer extends Component {
       if (!wordAlreadyPresent) {
         currentWords.push(newWordObj);
       }
+
       this.setState({words: currentWords});
     }
-    console.log(this.state.words);
     
     const channelName = this.props.channelName;
 
@@ -79,7 +80,7 @@ class TextAnswer extends Component {
             fontSizes: [16, 36],
             fontFamily: 'sans-serif',
           }}
-          words={this.state.words} 
+          words={this.props.userAnswers} 
         />
       </div>
     );
