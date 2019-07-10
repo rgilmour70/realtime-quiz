@@ -46,10 +46,5 @@
 			"5" : "kinda",
 			"10" : "lots"
 		}
-	},
-	{
-		"id" : 4,
-		"type" : "textAnswer",
-		"text" : "What is your favorite pasta?"
 	}
 ]
