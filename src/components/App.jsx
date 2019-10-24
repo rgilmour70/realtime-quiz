@@ -23,7 +23,7 @@ class App extends Component {
 
     // Make channel name based on questionId
     // Add this to state
-    const channelName = `ch_${questionId}`;
+    const channelName = `persisted:ch_${questionId}`;
     this.setState({channelName});
 
     // Determine question type and add to state
@@ -75,21 +75,37 @@ class App extends Component {
   }
 
   handleAddAnswer = (userAnswer) => {
-    this.setState(prevState => {
-      return {
-        userAnswers: prevState.userAnswers.concat(userAnswer)
-      };
-    });
+    if (Array.isArray(userAnswer)) {
+      this.setState(prevState => {
+        return { 
+          userAnswers: userAnswer 
+        };
+      });
+    } else {
+      this.setState(prevState => {
+        return {
+          userAnswers: prevState.userAnswers.concat(userAnswer)
+        };
+      });
+    }
   }
 
   render() {
+    if (this.state.question.type !== 'textAnswer') {
+      return (
+        <div className="container main">
+          <Quiz {...this.state} />
+          <AnswersChart {...this.state} />
+        </div>
+      );
+    }
     return (
       <div className="container main">
         <Quiz {...this.state} />
-        <AnswersChart {...this.state} />
       </div>
     );
   }
+
 }
 
 export default App;

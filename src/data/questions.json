@@ -10,7 +10,7 @@
 			},
 			{
 				"answerId" : 2,
-				"text" : "Warren Buffett"
+				"text" : "Prince"
 			},
 			{
 				"answerId" : 3,
@@ -46,5 +46,10 @@
 			"5" : "kinda",
 			"10" : "lots"
 		}
+	},
+	{
+		"id" : 4,
+		"type" : "textAnswer",
+		"text" : "What is your favorite pasta?"
 	}
 ]

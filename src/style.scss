@@ -2,13 +2,10 @@ $primary: steelblue;
 
 body {
 	background-color: lightcyan !important;
-  max-width: 95%;
-  overflow-x: hidden;
 }
 
 .main {
 	margin: 3em;
-  padding: none;
   counter-reset: answerNumber;
 }
 
@@ -67,10 +64,6 @@ input[type="radio"]:checked + label {
 }
 
 /* Styles for react-rangeslider */
-
-.rangeslider-horizontal {
-  max-width: 80%;
-}
 
 .slider .btn-primary {
   margin-top: 2em;
